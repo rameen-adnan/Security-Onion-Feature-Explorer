@@ -89,8 +89,8 @@ Detailed documentation is available in the `docs` directory.
 |----------------------------|--------------------------------------------------------------------|
 | Architecture-Setup.md      | Deployment notes, architecture, configuration, and lessons learned |
 | Cheat-Sheet.md             | Quick reference guide for common Security Onion tasks              |
-| API-Snippets.md            | API examples and automation scripts                                |
-| Feature-Explorers-Guide.md | API examples and automation scripts                                |
+| API-Automation-Snippets.md | API examples and automation scripts                                |
+| Feature-Explorers-Guide.md | Comprehensive Security Onion feature exploration and findings      |
 
 ---
 

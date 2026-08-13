@@ -1,6 +1,6 @@
 # Security Onion Feature Explorer's Guide
 > **Prerequisite Reading:** 
-**[Lab System Architecture Document](./architecture-Setup.md)**
+**[Lab System Architecture Document](./Architecture-Setup.md)**
 **[Cheat sheet Document](./Cheat-Sheet.md)**
 ---
 
@@ -81,7 +81,7 @@ event.dataset: suricata.alert
 
 **Screenshot:**
 
-![Suricata Log Path](../screenshots/hunt/suricata-log-path.jpeg)
+![Suricata EVE JSON](../screenshots/hunt/suricata-eve-json.jpeg)
 
 ---
 
@@ -89,7 +89,7 @@ event.dataset: suricata.alert
 
 **Screenshot:**
 
-![Suricata EVE JSON](../screenshots/hunt/suricata-eve-json.jpeg)
+![Suricata Log Path](../screenshots/hunt/suricata-log-path.jpeg)
 
 ---
 
@@ -160,7 +160,7 @@ event.dataset: zeek.dns
 ```bash
 curl  http://172.16.50.3/
 ```
-![Kali Command](../screenshots/commands/kali-http.jpe)
+![Kali Command](../screenshots/commands/kali-http.jpeg)
 
 
 **Hunt query:**
@@ -225,25 +225,38 @@ In Security Onion, Elastic Fleet manages agents on the SO node itself and any en
 
 #### Wazuh
 
-Wazuh is an **open-source SIEM and XDR (Extended Detection and Response)** platform focused on host-based security. It provides:
+Wazuh is an **open-source host-based security platform** that provides endpoint monitoring, threat detection, and response capabilities. It can monitor:
 
-- **Host-Based Intrusion Detection (HIDS)** — monitors file integrity, registry changes, log events, and running processes on endpoints
-- **Active response** — can execute automated actions (e.g., blocking IPs, killing processes) based on triggered rules
-- **MITRE ATT&CK mapping** — Wazuh rules are mapped to ATT&CK techniques for structured threat classification
-- **Agent-manager architecture** — lightweight Wazuh agents on endpoints communicate with a central Wazuh Manager that correlates and stores events
-- **Integration with Elastic** — Security Onion integrates Wazuh alerts into Elasticsearch, making them queryable alongside Zeek and Suricata data
+- **File integrity** — detects unauthorized changes to files
+- **Log events** — collects and analyzes operating-system and application logs
+- **Running processes** — provides visibility into processes on monitored hosts
+- **Security configuration** — checks endpoint configuration and security-related settings
+- **Threat detection** — generates alerts from endpoint activity and security rules
+- **MITRE ATT&CK mapping** — helps classify detected activity according to ATT&CK techniques
+- **Active response** — can perform automated response actions when configured
 
-> **Key distinction:** Elastic Fleet is primarily a *data collection and agent lifecycle management* platform. Wazuh is a *host-based threat detection and response* engine. In Security Onion, they are complementary — Fleet handles ingestion pipelines, Wazuh handles endpoint-level rule-based alerting.
+Wazuh uses an **agent-based architecture**, where agents installed on endpoints collect host information and communicate with a central Wazuh server.
 
----
+> **Important Security Onion 3.x distinction:** Wazuh is not the endpoint monitoring platform used in this Security Onion 3.2.0 evaluation. Security Onion 3.x uses **Elastic Agent and Elastic Fleet** for endpoint data collection and agent management.
 
-### 2.3.2 Why Wazuh Could Not Be Fully Explored in Eval Mode
+### 2.3.2 Wazuh in This Evaluation
 
-In **evaluation mode**, Security Onion restricts certain capabilities to protect the integrity of the production-adjacent environment. Specifically:
+Wazuh was **not deployed or tested as an endpoint monitoring component** during this Security Onion 3.2.0 evaluation.
 
-- **Agent enrollment was restricted** — deploying a new Wazuh agent to an external test machine requires generating enrollment keys and configuring the Wazuh Manager to accept new connections, both of which require elevated administrative permissions not available in eval mode
-- **No write access to Wazuh Manager config** — customizing Wazuh rules, active response scripts, or agent groups requires direct filesystem or API-level access to the Wazuh Manager container
-- **Host-based log review was limited** — viewing Wazuh-generated alerts (e.g., `wazuh.alerts` index) requires the agent to have shipped events first; without a registered agent, no new host-based data was generated
+Instead, endpoint-related functionality was explored through the Security Onion components available in the lab, particularly **Elastic Fleet, Elastic Agent, and Osquery**.
+
+Therefore, no Wazuh agent enrollment, Wazuh Manager configuration, Wazuh-specific rules, or Wazuh-generated alerts were included in the hands-on portion of this project.
+
+Wazuh is documented here for **feature comparison and background research**, rather than as a component that was successfully deployed in the evaluation environment.
+
+| Platform | Main Purpose |
+|---|---|
+| **Elastic Fleet** | Centralized management of Elastic Agents and their data collection |
+| **Elastic Agent** | Collects endpoint telemetry and sends it to Security Onion |
+| **Osquery** | Provides detailed host-state information through SQL-like queries |
+| **Wazuh** | Separate open-source endpoint security and threat-detection platform |
+
+> **Lab finding:** Because Wazuh was not deployed in this Security Onion 3.2.0 evaluation, no Wazuh alerts or Wazuh endpoint events were used in the investigation workflow. The hands-on endpoint exploration focused on the Elastic Agent/Fleet and Osquery functionality available in the lab.
 ---
 
 ### 2.3.3 Elastic Fleet: What Was Explored
@@ -824,7 +837,7 @@ A **Case** was created in Security Onion to document the full investigation life
 
 **Screenshot:**
 
-![Case Events](../screenshots/cheatsheet/case-events.png)
+![Case Events](../screenshots/cheatsheet/case-events.jpeg)
 
 ---
 
