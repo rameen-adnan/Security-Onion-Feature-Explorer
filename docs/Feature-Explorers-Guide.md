@@ -1011,12 +1011,15 @@ MoM allows a single designated Security Onion grid (the **MoM node**) to manage 
 
 **Architecture:**
 
+```text
 [ Analyst Browser ]
-|
-▼
-[ MoM Manager Node ] ──── queries/config ────► [ Subgrid A Manager ]
-────────────────────────► [ Subgrid B Manager ]
-────────────────────────► [ Subgrid C Manager ]
+        |
+        ▼
+[ MoM Manager Node ]
+     /      |      \
+    ▼       ▼       ▼
+[Subgrid A][Subgrid B][Subgrid C]
+```
 
 
 **Key characteristics:**
