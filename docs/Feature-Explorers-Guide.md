@@ -63,7 +63,7 @@ event.dataset: suricata.alert
 
 **Screenshot:**
 
-![Suricata Alert](../screenshots/hunt/suricata-alert.JPEG)
+![Suricata Alert](../screenshots/hunt/suricata-alert.jpeg)
 
 ---
 
@@ -81,7 +81,7 @@ event.dataset: suricata.alert
 
 **Screenshot:**
 
-![Suricata Log Path](../screenshots/hunt/suricata-log-path.JPEG)
+![Suricata Log Path](../screenshots/hunt/suricata-log-path.jpeg)
 
 ---
 
@@ -89,7 +89,7 @@ event.dataset: suricata.alert
 
 **Screenshot:**
 
-![Suricata EVE JSON](../screenshots/hunt/suricata-eve-json.JPEG)
+![Suricata EVE JSON](../screenshots/hunt/suricata-eve-json.jpeg)
 
 ---
 
@@ -129,7 +129,7 @@ Windows ping rameen generated an LLMNR name-resolution request. Zeek recorded th
 ```bash
 ping rameen
 ```
-![DNS Command](../screenshots/commands/dns-command.JPEG)
+![DNS Command](../screenshots/commands/dns-command.jpeg)
 
 **Hunt query:**
 
@@ -160,7 +160,7 @@ event.dataset: zeek.dns
 ```bash
 curl  http://172.16.50.3/
 ```
-![Kali Command](../screenshots/commands/kali-http.JPEG)
+![Kali Command](../screenshots/commands/kali-http.jpe)
 
 
 **Hunt query:**
@@ -170,7 +170,7 @@ event.dataset: zeek.http
 
 **Screenshot:**
 
-![Zeek HTTP Log](../screenshots/commands/zeek-http.JPEG)
+![Zeek HTTP Log](../screenshots/commands/zeek-http.jpeg)
 
 ---
 

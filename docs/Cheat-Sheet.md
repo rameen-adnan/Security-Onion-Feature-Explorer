@@ -230,30 +230,30 @@ Final verdict: Benign simulated test activity. The CUSTOM LAB HTTP USER AGENT Su
 ---
 
 ## Quick Decision Tree — What to Open First?
-Alert fires in SO
-│
-▼
-Open HUNT
-Search: rule.name:"<alert name>"
-│
-├── Who is the source IP?
-│ Search: source.ip: X OR destination.ip: X
-│ → Any other alerts on this host?
-│
-├── What did they do?
-│ event.dataset: zeek.http → check User-Agent, URI
-│ event.dataset: zeek.dns → check what domains they resolved
-│ event.dataset: zeek.conn → check all connections, bytes, duration
-│
-├── Pull the PCAP
-│ → Confirm what the alert actually saw at packet level
-│
-└── Open a CASE
-→ Attach PCAP
-→ Add observables
-→ Link alert event
-→ Document findings
-→ Close with verdict
+Alert fires in SO  
+│  
+▼  
+Open HUNT  
+Search: `rule.name:"<alert name>"`  
+│  
+├── Who is the source IP?  
+│   Search: `source.ip:X OR destination.ip:X`  
+│   → Any other alerts on this host?  
+│  
+├── What did they do?  
+│   `event.dataset: zeek.http` → check User-Agent, URI  
+│   `event.dataset: zeek.dns` → check what domains they resolved  
+│   `event.dataset: zeek.conn` → check all connections, bytes, duration  
+│  
+├── Pull the PCAP  
+│   → Confirm what the alert actually saw at packet level  
+│  
+└── Open a CASE  
+    → Attach PCAP  
+    → Add observables  
+    → Link alert event  
+    → Document findings  
+    → Close with verdict
 
 
 ---
