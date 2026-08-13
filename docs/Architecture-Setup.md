@@ -108,7 +108,7 @@ sudo so-test --pcap /tmp/task03-10k.pcap
 ```
 The replayed packets were processed by Security Onion and analyzed by Zeek. Zeek generated network connection metadata from the traffic, which was ingested into Security Onion and made available through the Hunt interface.
 
-![PCAP Replay](../screenshots/pcap/pcap-replay.JPEG)
+![PCAP Replay](../screenshots/pcap/pcap-replay.jpeg)
 The PCAP replay completed successfully.
 
 **Hunt Verification**
